@@ -1,0 +1,146 @@
+aside {
+  grid-area: sidebar;
+  padding: 0.8rem;
+  background-color: white;
+  align-self: start;
+  position: fixed;
+  z-index: 2;
+  height: 100vh;
+  width: 10vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  margin-block: 0.7rem;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+.sidebar-option:hover {
+  background-color: rgb(221, 221, 221);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.home-and-calendar-container {
+  
+  margin-bottom: -1.8rem;
+}
+
+.activity {
+  margin-left: 0.7rem;
+}
+
+@media(max-width: 1650px) {
+  aside {
+    width: 15vw;
+  }
+  .sidebar-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  .sidebar-text {
+    font-size: 1.25rem; 
+  }
+}
+@media(max-width: 1335px) {
+  aside {
+    width: 18vw;
+  }
+  .sidebar-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .sidebar-text {
+    font-size: 1.5rem; 
+  }
+}
+@media(max-width: 970px) {
+  aside {
+    width: 25vw;
+  }
+  .sidebar-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .sidebar-text {
+    font-size: 1.5rem; 
+  }
+}
+@media(max-width: 1031px) {
+  aside {
+    width: 15vw;
+  }
+  .sidebar-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .sidebar-text {
+    display: none;
+  }
+}
+
+.sidebar-2 {
+  display: none;
+}
+
+.cross {
+  width: 2.25rem;
+  height: 2.25rem;
+  background-color: rgb(255, 255, 255);
+  padding: 0.2rem;
+  border-radius: 5px;
+  transition: all 0.4s ease;
+}
+.cross:active {
+  transform: scale(1.5);
+  transition: all 0.4s ease;
+}
+@media(max-width: 900px) {
+  aside {
+    display: none;
+  }
+  .sidebar-2 {
+    display: initial;
+    padding: 0.8rem;
+    background-color: white;
+    top: 44px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100vh;
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+@media(max-width: 585px) {
+  .sidebar-2 {
+    width: 35vw;
+  }
+}
+@media(max-width: 395px) {
+  .sidebar-2 {
+    width: 40vw;
+  }
+}
+@media(max-width: 360px) {
+  .sidebar-2 {
+    width: 45vw;
+  }
+}
+
+.sidebar-2-top {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}

@@ -1,0 +1,44 @@
+import dayjs from 'dayjs'
+import { useEffect, useState } from "react"
+
+export default function Header(props) {
+  const [dateAndTime, setDataAndTime] = useState({
+    time: dayjs().format('h:mm A'),
+    date: dayjs().format('dddd, MMMM D')
+  })
+
+
+  function handleMoreButton() {
+    props.setMoreButton(prevMoreButton => prevMoreButton = true)
+  }
+
+  setInterval(() => {
+    setDataAndTime((prevDateAndTime) => {
+      return prevDateAndTime = {
+        time: dayjs().format('h:mm A'),
+        date: dayjs().format('dddd, MMMM D')
+      }
+    })
+  }, 1000)
+
+  return (
+    <header>
+      <nav>
+        <div className="nav-left">
+        <img className="study-pro-logo" src="studypro/images&icons/Black Illustrated School Logo with text.png"/>
+        <img className="study-pro-logo without-text" src="studypro\images&icons/Black Illustrated School Logo without text.png"/>
+        <p className="time">{dateAndTime.time}</p>
+        <p className="date">{dateAndTime.date}</p>
+        <h1 className="mobile-title">StudyPro</h1>
+        </div>
+
+        <div className="nav-right">
+          <a href="#"><img className="icon" src="/studypro/images&icons/settings.png" /></a>
+          <a href="#"><img className="icon" src="/studypro/images&icons/user.png" /></a>
+          <h2>{props.userInfo.name} {props.userInfo.familyName}</h2>
+          <div className="more-button" onClick={handleMoreButton}><img src="studypro/images&icons/more.png" /></div>
+        </div>
+      </nav>
+    </header>
+  )
+}

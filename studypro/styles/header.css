@@ -1,0 +1,157 @@
+header {
+  grid-area: navbar;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12vh;
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-left: 11%;
+}
+@media(max-width: 1650px) {
+  .nav-left {
+    margin-left: 17%;
+  }
+}
+@media(max-width: 1335px) {
+  .nav-left {
+    margin-left: 25%;
+  }
+}
+@media(max-width: 1031px) {
+  .nav-left {
+    margin-left: 15%;
+  }
+}
+@media(max-width: 870px) {
+  .nav-left {
+    margin-left: 15%;
+  }
+}
+
+.study-pro-logo {
+  width: 4.8rem;
+  height: 4.8rem;
+  margin-right: 1rem;
+  align-self: center;
+}
+
+.without-text {
+  display: none;
+}
+
+.time {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.date {
+  align-self:baseline;
+  color: rgb(105, 105, 105);
+  font-weight: 600;
+}
+
+.mobile-title {
+  color: black;
+  margin-left: 15%;
+  display: none;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more-button > img {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: rgb(235, 235, 235);
+  padding: 0.5rem;
+  border-radius: 5px;
+  display: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.more-button > img:active {
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-right: 1rem;
+  background-color: rgb(235, 235, 235);
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+@media(max-width: 925px) {
+  .nav-right a , .nav-right h2{
+    display: none;
+  }
+  .more-button > img {
+    display: initial;
+    color: black;
+  }
+  .nav-left {
+    margin-left: 3%;
+  }
+}
+@media(max-width: 585px) {
+  .nav-left {
+    margin-left: 0%;
+  }
+  .study-pro-logo {
+    margin-right: -4%;
+    margin-left: -1%;
+  }
+}
+@media(max-width: 550px) {
+  .time , .date {
+    display: none;
+  }
+  .mobile-title {
+    display: initial;
+    margin-left: 0;
+    align-self: center;
+  }
+  .study-pro-logo {
+    display: none;
+  }
+  .without-text {
+    display: initial;
+    width: 5rem;
+    height: 5rem;
+    margin-left: -0.8rem;
+  }
+}
+@media(max-width: 395px) {
+  .mobile-title {
+    font-size: 1.5rem;
+  }
+}
+@media(max-width: 360px) {
+  .mobile-title {
+    font-size: 1.25rem;
+  }
+}
