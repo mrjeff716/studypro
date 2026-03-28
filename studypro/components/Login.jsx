@@ -24,8 +24,7 @@ export default function Login(props) {
     <section className="form-container">
       <form onSubmit={handleSubmit}>
         <div className="labels-container">
-        <label htmlFor="name">Welcome to StudyPro. </label>
-        <label htmlFor="familyName"> To get started, please fill the following:</label>
+        <label htmlFor="name">Welcome to StudyPro</label>
         </div>
         <input
           className="info-input"

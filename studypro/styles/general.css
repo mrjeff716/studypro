@@ -3,15 +3,19 @@
   font-family: "Arimo", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: rgba(147, 147, 147, 0.1);
+  background: #e2e2e2ce
 }
 
 #root {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
   /* first row is the fixed header height so main content begins below it */
   grid-template-rows: auto 1fr;
   grid-template-areas: 
