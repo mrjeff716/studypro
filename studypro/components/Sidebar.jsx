@@ -6,7 +6,6 @@ export default function Sidebar(props) {
   
   function handleOnClick() {
     setActivities(prevActivities => prevActivities = !prevActivities)
-    console.log("clicked")
   }
   function handleCrossClick() {
     props.setMoreButton(prevMoreButton => prevMoreButton = false)

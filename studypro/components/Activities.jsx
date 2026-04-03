@@ -1,6 +1,5 @@
-import { formatDate } from "@fullcalendar/core/index.js"
-import { isPropsValid } from "@fullcalendar/core/internal"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, memo } from "react"
+import dayjs from "dayjs"
 import { nanoid } from "nanoid"
 import { subjects } from "../utils/activityImages.js"
 import PixelBlast from './PixelBlast';
@@ -15,6 +14,19 @@ export function RenderActivity(props) {
 
   const isDoneBtnClicked = props.activity && props.activity.id
   //const isIdUndefined = props.activity.id ? true : false;
+
+  /*useEffect(() => {
+    localStorage.setItem("isNewActivityClicked", JSON.stringify(true))
+  }, [newActivity])
+
+  function getNewActivity() {
+    try {
+      const getNewActivityFromStorage = JSON.parse(localStorage.getItem("isNewActivityClicked")) || false;
+      return getNewActivityFromStorage
+    } catch (error) {
+      console.error("An error occured. Please try again later", error)
+    }
+  }*/
 
 
   function handleNewActivityClick() {
@@ -32,7 +44,15 @@ export function RenderActivity(props) {
     if (activityType && subject && description && dueDate) {
       props.setActivities(prev => {
       if (activityType !== "" && description !== "" && dueDate !== "") {
-        return [...prev, {id: nanoid(), activityType: activityType, subject: subject, description: description, dueDate: dueDate}]
+        return [...prev, {
+          id: nanoid(),
+          activityType: activityType,
+          subject: subject,
+          description: description,
+          dueDate: dayjs(dueDate).format("MM/DD/YYYY"),
+          timeOfSubmission: dayjs()
+        }
+        ]
       } else {
         return [...prev]
       }
@@ -53,7 +73,7 @@ export function RenderActivity(props) {
 
     function deleteActivity() {
       props.setActivities(prev => {
-    return prev.filter(activity => activity.id !== props.activity.id)
+        return prev.filter(activity => activity.id !== props.activity.id)
       })
     }
 
@@ -100,6 +120,7 @@ export function RenderActivity(props) {
   observer.observe(el)
   return () => observer.disconnect()
 }, [])
+
 
   const className= clsx("activity-card", {
     "filtered-activity" : props.sidebarActivityType !== "" ? props.sidebarActivityType === props.activity.activityType ? false : true : false
@@ -205,7 +226,11 @@ export function RenderActivity(props) {
             round={false}
           />
           </div>
-          <button className="mark-as-done-button" onClick={deleteActivity}>Mark as done</button>
+          <button className="mark-as-done-button" onClick={() => {
+            
+            props.setTotalTasksCompleted(prev => [...prev , props.activity])
+            deleteActivity()
+          }}>Mark as done</button>
             </div>
 
           </div>}

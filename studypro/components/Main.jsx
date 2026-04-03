@@ -1,14 +1,17 @@
 import { useState, useEffect, useRef } from "react"
 import dayjs from "dayjs"
-import Prism from './Prism';
+import DarkVeil from './DarkVeil.jsx';
 import Quotes from "./Quotes.jsx"
 import ChromaGrid from '../ChromaGrid';
 import Calendar from "./Calendar.jsx"
 import { RenderActivity } from "./Activities.jsx";
+import { useInView } from 'react-intersection-observer';
 
 
 export default function Main(props) {
-  
+  const { ref, inView } = useInView({
+  threshold: 0,
+});
 
   let greetingMessage = ""
   let hour = dayjs().format("HH")
@@ -23,41 +26,50 @@ export default function Main(props) {
   }
 
   const firstName = JSON.parse(localStorage.getItem("userInfo")).name || "guest"
+  
+  const overdueTasks = props.activities.filter(activity => {
+    const date1 = dayjs()
+    const date2 = activity.dueDate
+    return date1.diff(date2) > 0
+  }).length
 
   const items = [
   {
-    title: `👀Pending tasks: ${3}`,
+    title: `👀Pending Activities: ${props.activities.length - 1}`,
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #3B82F6, #000)",
   },
   {
-    title: `⚠️Overdue task(s): ${1}`,
+    title: `⚠️Overdue task(s): ${overdueTasks}`,
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #3B82F6, #000)",
   },
   {
-    title: `✅Tasks completed: ${2}`,
+    title: `✅Tasks completed this week: ${props.weeklyTasksCompleted.length || 0}`,
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #3B82F6, #000)",
   },
   {
-    title: `🔥streak: ${6}`,
+    title: `✅Total tasks completed: ${props.totalTasksCompleted.length}`,
     borderColor: "#3B82F6",
     gradient: "linear-gradient(145deg, #3B82F6, #000)",
   }
 ];
+
 
   function RenderActivities() {
     let activitiesHTML = []
     if (props.activities.length >= 1) {
       for (let i = 0; i < props.activities.length; i++) {
       let activity = props.activities[i] ? props.activities[i] : {id: null, activityType:null, description:null, dueDate:null};
-      activitiesHTML.push(<RenderActivity activities={props.activities} setActivities={props.setActivities} activity={activity} index={i} key={i} activityCard={props.activityCard} sidebarActivityType={props.sidebarActivityType}/>)
+      activitiesHTML.push(<RenderActivity activities={props.activities} setActivities={props.setActivities} activity={activity} index={i} key={i} activityCard={props.activityCard} sidebarActivityType={props.sidebarActivityType} setTotalTasksCompleted={props.setTotalTasksCompleted} totalTasksCompleted={props.totalTasksCompleted}
+        setWeeklyTasksCompleted={props.setWeeklyTasksCompleted}/>)
     } 
     } else {
       for (let i = 0; i < props.activities.length; i++) {
       let activity = props.activities[i] ? props.activities[i] : {id: null, activityType:null, description:null, dueDate:null};
-      activitiesHTML.push(<RenderActivity activities={props.activities} setActivities={props.setActivities} activity={activity} index={i} key={i} activityCard={props.activityCard} sidebarActivityType={props.sidebarActivityType}/>)
+      activitiesHTML.push(<RenderActivity activities={props.activities} setActivities={props.setActivities} activity={activity} index={i} key={i} activityCard={props.activityCard} sidebarActivityType={props.sidebarActivityType} setTotalTasksCompleted={props.setTotalTasksCompleted} totalTasksCompleted={props.totalTasksCompleted}
+      setWeeklyTasksCompleted={props.setWeeklyTasksCompleted}/>)
     } 
     }
     return activitiesHTML
@@ -69,18 +81,16 @@ export default function Main(props) {
       <div className="sec1-container">
         <div className="sec1-top-part">
 
-          <div style={{ minWidth: '100%', minHeight: '100%', position: 'relative', opacity: "1" }}>
-          <Prism
-          animationType="3drotate"
-          timeScale={1}
-          height={3.5}
-          baseWidth={5.5}
-          scale={3.6}
-          hueShift={0}
-          colorFrequency={1}
-          noise={0}
-          glow={1}
-        /> 
+          <div style={{ minWidth: '100%', minHeight: '100%', position: 'relative', opacity: "1" }} ref={ref}>
+            { inView ? <DarkVeil
+              hueShift={0}
+              noiseIntensity={0}
+              scanlineIntensity={0}
+              speed={2.3}
+              scanlineFrequency={0.5}
+              warpAmount={0}
+              resolutionScale={1}
+            /> : null}
       </div>
 
           <Quotes />
@@ -107,7 +117,7 @@ export default function Main(props) {
 
       <section className="sec2" style={{borderRadius: "10px"}} ref={props.calendar}>
         <div style={{width: "100%", height: "100%"}}>
-          <Calendar />
+          <Calendar activities={props.activities}/>
         </div>
       </section>
     

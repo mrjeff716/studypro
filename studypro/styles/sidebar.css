@@ -35,9 +35,22 @@ aside {
   margin-left: 0.7rem;
 }
 
+@media(min-width: 1650px) {
+  aside {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+    width: 15vw;
+    height: 100vh;
+  }
+}
+
 @media(max-width: 1650px) {
   aside {
     width: 15vw;
+    height: 100vh;
   }
   .sidebar-icon {
     width: 2.75rem;
