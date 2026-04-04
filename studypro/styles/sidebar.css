@@ -206,5 +206,9 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-self: center;
+  align-self: flex-end;
+}
+
+.cross {
+  align-self: flex-end;
 }

@@ -25,8 +25,8 @@ export default function Header(props) {
     <header>
       <nav>
         <div className="nav-left">
-        <img className="study-pro-logo" src="/images&icons/BlackIllustratedSchoolLogowithtext.png"/>
-        <img className="study-pro-logo without-text" src="/images&icons/BlackIllustratedSchoolLogowithouttext.png"/>
+        <img className="study-pro-logo" src="/studypro/images&icons/BlackIllustratedSchoolLogowithtext.png"/>
+        <img className="study-pro-logo without-text" src="/studypro/images&icons/BlackIllustratedSchoolLogowithouttext.png"/>
         <p className="time">{dateAndTime.time}</p>
         <p className="date">{dateAndTime.date}</p>
         <h1 className="mobile-title">StudyPro</h1>
@@ -36,7 +36,7 @@ export default function Header(props) {
           {/*<a href="#"><img className="icon" src="/images&icons/settings.png" /></a>
           <a href="#"><img className="icon" src="/images&icons/user.png" /></a>*/}
           <h2>{props.userInfo.name} {props.userInfo.familyName}</h2>
-          <div className="more-button" onClick={handleMoreButton}><img src="/images&icons/more.png" /></div>
+          <div className="more-button" onClick={handleMoreButton}><img src="/studypro/images&icons/more.png" /></div>
         </div>
       </nav>
     </header>
