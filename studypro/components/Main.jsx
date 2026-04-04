@@ -12,6 +12,7 @@ export default function Main(props) {
   const { ref, inView } = useInView({
   threshold: 0,
 });
+  const [isViewMoreRendered, setIsViewMoreRendered] = useState(false)
 
   let greetingMessage = ""
   let hour = dayjs().format("HH")
@@ -62,14 +63,36 @@ export default function Main(props) {
     if (props.activities.length >= 1) {
       for (let i = 0; i < props.activities.length; i++) {
       let activity = props.activities[i] ? props.activities[i] : {id: null, activityType:null, description:null, dueDate:null};
-      activitiesHTML.push(<RenderActivity activities={props.activities} setActivities={props.setActivities} activity={activity} index={i} key={i} activityCard={props.activityCard} sidebarActivityType={props.sidebarActivityType} setTotalTasksCompleted={props.setTotalTasksCompleted} totalTasksCompleted={props.totalTasksCompleted}
-        setWeeklyTasksCompleted={props.setWeeklyTasksCompleted}/>)
-    } 
+      activitiesHTML.push(<RenderActivity
+        activities={props.activities}
+        setActivities={props.setActivities}
+        activity={activity}
+        index={i}
+        key={i}
+        activityCard={props.activityCard}
+        sidebarActivityType={props.sidebarActivityType}
+        setTotalTasksCompleted={props.setTotalTasksCompleted}
+        totalTasksCompleted={props.totalTasksCompleted}
+        setWeeklyTasksCompleted={props.setWeeklyTasksCompleted}
+        setIsViewMoreRendered={setIsViewMoreRendered}
+        isViewMoreRendered={isViewMoreRendered}/>)
+      } 
     } else {
       for (let i = 0; i < props.activities.length; i++) {
       let activity = props.activities[i] ? props.activities[i] : {id: null, activityType:null, description:null, dueDate:null};
-      activitiesHTML.push(<RenderActivity activities={props.activities} setActivities={props.setActivities} activity={activity} index={i} key={i} activityCard={props.activityCard} sidebarActivityType={props.sidebarActivityType} setTotalTasksCompleted={props.setTotalTasksCompleted} totalTasksCompleted={props.totalTasksCompleted}
-      setWeeklyTasksCompleted={props.setWeeklyTasksCompleted}/>)
+      activitiesHTML.push(<RenderActivity
+        activities={props.activities}
+        setActivities={props.setActivities}
+        activity={activity}
+        index={i}
+        key={i}
+        activityCard={props.activityCard}
+        sidebarActivityType={props.sidebarActivityType}
+        setTotalTasksCompleted={props.setTotalTasksCompleted}
+        totalTasksCompleted={props.totalTasksCompleted}
+        setWeeklyTasksCompleted={props.setWeeklyTasksCompleted}
+        setIsViewMoreRendered={setIsViewMoreRendered}
+        isViewMoreRendered={isViewMoreRendered}/>)
     } 
     }
     return activitiesHTML
@@ -78,7 +101,7 @@ export default function Main(props) {
   return (
   <main>
     <section className="sec1" ref={props.home}>
-      <div className="sec1-container">
+      {!isViewMoreRendered && <div className="sec1-container">
         <div className="sec1-top-part">
 
           <div style={{ minWidth: '100%', minHeight: '100%', position: 'relative', opacity: "1" }} ref={ref}>
@@ -112,13 +135,13 @@ export default function Main(props) {
         {/*<div className="block3">Total tasks completed (7 days)</div>*/}
         {/*<div className="block4">Streak (7 days)</div>*/}
         </div>
-      </div>
+      </div>}
     </section>
 
       <section className="sec2" style={{borderRadius: "10px"}} ref={props.calendar}>
-        <div style={{width: "100%", height: "100%"}}>
+        { !isViewMoreRendered && <div style={{width: "100%", height: "100%"}}>
           <Calendar activities={props.activities}/>
-        </div>
+        </div>}
       </section>
     
       <section className="sec3">

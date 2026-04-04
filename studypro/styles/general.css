@@ -5,6 +5,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
   display: grid;
   grid-template-columns: 1fr auto;
   /* first row is the fixed header height so main content begins below it */
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto;
   grid-template-areas: 
   "navbar navbar"
   "sidebar main"

@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 
 export default function Sidebar(props) {
   const [activities, setActivities] = useState(false)
+  const [logout, setLogOut] = useState(false)
 
   
   function handleOnClick() {
@@ -13,6 +14,7 @@ export default function Sidebar(props) {
   return (
     <>
     <aside>
+      <div style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
       <div className="home-and-calendar-container">
       <span className="sidebar-option"
       onClick={() => {
@@ -38,8 +40,25 @@ export default function Sidebar(props) {
       </div>
       }
       </div>
+    </div>
+      <span className="sidebar-option activity logout" onClick={() => setLogOut(true)}><img className="icon sidebar-icon" src="studypro/images&icons/logout.png" /><span className="sidebar-text">Log out</span></span>
     </aside>
+    {logout ? <div className="logout-container">
+      <div className="logout-modal">
+        <h1>Are you sure you want to log out?</h1>
+        <div style={{display: "flex", gap: "1rem"}}>
+        <button className="modal-button" onClick={() => {
+          setLogOut(false)
+          props.setUserInfo(prev => prev = null)
+        }}>Yes</button>
+        <button className="modal-button" onClick ={() => {
+          setLogOut(false)
+        }}>No</button>
+        </div>
+      </div>
+    </div> : null}
     { props.moreButton && <aside className="sidebar-2">
+      <div style={{display: "flex", flexDirection: "column", gap: "1rem"}}>
       <div className="sidebar-2-top">
           <a href="#"><img className="icon" src="/studypro/images&icons/settings.png" /></a>
           <a href="#"><img className="icon" src="/studypro/images&icons/user.png" /></a>
@@ -70,6 +89,8 @@ export default function Sidebar(props) {
       </div>
       }
       </div>
+    </div>
+    <span className="sidebar-option activity logout" onClick={() => setLogOut(true)}><img className="icon sidebar-icon" src="studypro/images&icons/logout.png" /><span className="sidebar-text">Log out</span></span>
     </aside>}
     </>
   )

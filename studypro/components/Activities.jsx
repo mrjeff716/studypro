@@ -10,23 +10,8 @@ export function RenderActivity(props) {
   const [newActivity, setNewActivity] = useState(false)
   const [viewMore, setViewMore] = useState(false)
   const carouselWrapperRef = useRef(null)
-  const [carouselWidth, setCarouselWidth] = useState(300)
 
   const isDoneBtnClicked = props.activity && props.activity.id
-  //const isIdUndefined = props.activity.id ? true : false;
-
-  /*useEffect(() => {
-    localStorage.setItem("isNewActivityClicked", JSON.stringify(true))
-  }, [newActivity])
-
-  function getNewActivity() {
-    try {
-      const getNewActivityFromStorage = JSON.parse(localStorage.getItem("isNewActivityClicked")) || false;
-      return getNewActivityFromStorage
-    } catch (error) {
-      console.error("An error occured. Please try again later", error)
-    }
-  }*/
 
 
   function handleNewActivityClick() {
@@ -111,16 +96,6 @@ export function RenderActivity(props) {
     },
   ]
 
-  useEffect(() => {
-  const el = carouselWrapperRef.current
-  if (!el) return
-  const observer = new ResizeObserver(([entry]) => {
-    setCarouselWidth(entry.contentRect.width)
-  })
-  observer.observe(el)
-  return () => observer.disconnect()
-}, [])
-
 
   const className= clsx("activity-card", {
     "filtered-activity" : props.sidebarActivityType !== "" ? props.sidebarActivityType === props.activity.activityType ? false : true : false
@@ -182,7 +157,10 @@ export function RenderActivity(props) {
           <h1 className="activity-after-click" name="activityType">Activity Type: <span style={{color: "rgba(0,0,0,0.6", fontWeight: "500"}}>{props.activity.activityType}</span></h1>
           <h1 className="activity-after-click">Subject: <span style={{color: "rgba(0,0,0,0.6", fontWeight: "500"}}>{props.activity.subject}</span></h1>
           <h1 className="activity-after-click">Description: <span style={{color: "rgba(0,0,0,0.6", fontWeight: "500", width: "fit-content"}}>{shortenedDesJoined}...
-            <span style={{textDecoration: "underline", cursor:"pointer"}} onClick={() => { setViewMore(prev => prev = true) }}>View more</span></span>
+            <span style={{textDecoration: "underline", cursor:"pointer"}} onClick={() => {
+              props.setIsViewMoreRendered(prev => prev = true)
+              setViewMore(prev => prev = true)
+              }}>View more</span></span>
             </h1>
           <h1 className="activity-after-click">Due date: <span style={{color: "rgba(0,0,0,0.6", fontWeight: "500"}}>{props.activity.dueDate}</span></h1>
           <button className="delete-activity-button" onClick={deleteActivity}>Delete</button>
@@ -190,7 +168,10 @@ export function RenderActivity(props) {
           }
 
           { viewMore && <div className="view-more-tab-container">
-            <a className="close-view-more" title="close this page" onClick={() => setViewMore(prev => prev = false)}>❌</a>
+            <a className="close-view-more" title="close this page" onClick={() => {
+              setViewMore(prev => prev = false)
+              props.setIsViewMoreRendered(prev => prev = false)
+              }}>❌</a>
             <div className="view-more-background">
               <PixelBlast
               variant="square"

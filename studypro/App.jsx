@@ -103,7 +103,7 @@ export default function App() {
   
   // Also update LocalStorage so it persists for the next visit
   localStorage.setItem("weeklyTasksCompleted", JSON.stringify(filteredTasks));
-  console.log("checked for weekly tasks completed", "weeklyTasksCompleted:", weeklyTasksCompleted.length)
+  //console.log("checked for weekly tasks completed", "weeklyTasksCompleted:", weeklyTasksCompleted.length) Test
   }
   formatWeeklyTasksCompleted()
   }, [])
@@ -123,6 +123,7 @@ export default function App() {
     setGoToCalendar={setGoToCalendar}
     setGoToActivities = {setGoToActivities}
     setSidebarActivityType = {setSidebarActivityType}
+    setUserInfo = {setUserInfo}
     />
 
     <Main home={home} calendar={calendar} activities={activities} setActivities={setActivities} activityCard={activityCard} sidebarActivityType={sidebarActivityType}
