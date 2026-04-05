@@ -1,4 +1,12 @@
 import { useState, useRef } from "react"
+import home from "../imagesandicons/home.png"
+import schedule from "../imagesandicons/schedule.png"
+import checklist from "../imagesandicons/checklist.png"
+import clipboard from "../imagesandicons/clipboard.png"
+import quiz from "../imagesandicons/quiz.png"
+import test from "../imagesandicons/test.png"
+import vacations from "../imagesandicons/vacations.png"
+import logoutImg from "../imagesandicons/logout.png"
 
 export default function Sidebar(props) {
   const [activities, setActivities] = useState(false)
@@ -20,28 +28,28 @@ export default function Sidebar(props) {
       onClick={() => {
         props.setGoToHome(prev => prev = !prev)
       }}
-      ><img className="icon sidebar-icon" src="/studypro/imagesandicons/home.png"/><span className="sidebar-text">Home</span></span>
+      ><img className="icon sidebar-icon" src={home}/><span className="sidebar-text">Home</span></span>
       <span className="sidebar-option"
       onClick={() => {
         props.setGoToCalendar(prev => prev = !prev)
       }}
-      ><img className="icon sidebar-icon" src="/studypro/imagesandicons/schedule.png" /><span className="sidebar-text">Calendar</span></span>
+      ><img className="icon sidebar-icon" src={schedule} /><span className="sidebar-text">Calendar</span></span>
       </div>
       <div className="tasks-container" >
       <span className="sidebar-option" onClick={() => {
         handleOnClick()
-        props.setGoToActivities(prev => prev = !prev)}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/checklist.png" /><span className="sidebar-text">Activities↓</span></span>
+        props.setGoToActivities(prev => prev = !prev)}}><img className="icon sidebar-icon" src={checklist} /><span className="sidebar-text">Activities↓</span></span>
       { activities === true &&
       <div className="tasks">
-      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Task")}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/clipboard.png" /><span className="sidebar-text">Tasks</span></span>
-      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Quizz")}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/quiz.png" /><span className="sidebar-text">Quizzes</span></span>
-      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Exam")}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/test.png" /><span className="sidebar-text">Exams</span></span>
-      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Vacation")}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/vacations.png" /><span className="sidebar-text">Vacations</span></span>
+      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Task")}}><img className="icon sidebar-icon" src={clipboard} /><span className="sidebar-text">Tasks</span></span>
+      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Quizz")}}><img className="icon sidebar-icon" src={quiz} /><span className="sidebar-text">Quizzes</span></span>
+      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Exam")}}><img className="icon sidebar-icon" src={test} /><span className="sidebar-text">Exams</span></span>
+      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Vacation")}}><img className="icon sidebar-icon" src={vacations} /><span className="sidebar-text">Vacations</span></span>
       </div>
       }
       </div>
     </div>
-      <span className="sidebar-option activity logout" onClick={() => setLogOut(true)}><img className="icon sidebar-icon" src="/studypro/imagesandicons/logout.png" /><span className="sidebar-text">Log out</span></span>
+      <span className="sidebar-option activity logout" onClick={() => setLogOut(true)}><img className="icon sidebar-icon" src={logoutImg} /><span className="sidebar-text">Log out</span></span>
     </aside>
     {logout ? <div className="logout-container">
       <div className="logout-modal">
@@ -69,28 +77,28 @@ export default function Sidebar(props) {
       onClick={() => {
         props.setGoToHome(prev => prev = !prev)
       }}
-      ><img className="icon sidebar-icon" src="/studypro/imagesandicons/home.png" /><span className="sidebar-2-text">Home</span></span>
+      ><img className="icon sidebar-icon" src={home} /><span className="sidebar-2-text">Home</span></span>
       <span className="sidebar-option"
       onClick={() => {
         props.setGoToCalendar(prev => prev = !prev)
       }}
-      ><img className="icon sidebar-icon" src="/studypro/imagesandicons/schedule.png" /><span className="sidebar-2-text">Calendar</span></span>
+      ><img className="icon sidebar-icon" src={schedule} /><span className="sidebar-2-text">Calendar</span></span>
       </div>
       <div className="tasks-container" >
       <span className="sidebar-option" onClick={() => {
         handleOnClick()
-        props.setGoToActivities(prev => prev = !prev)}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/checklist.png" /><span className="sidebar-2-text">Activities↓</span></span>
+        props.setGoToActivities(prev => prev = !prev)}}><img className="icon sidebar-icon" src={checklist} /><span className="sidebar-2-text">Activities↓</span></span>
       { activities === true &&
       <div className="tasks">
-      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Task")}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/clipboard.png" /><span className="sidebar-2-text">Tasks</span></span>
-      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Quizz")}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/quiz.png" /><span className="sidebar-2-text">Quizzes</span></span>
-      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Exam")}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/test.png" />Exams<span className="sidebar-text"></span></span>
-      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Vacation")}}><img className="icon sidebar-icon" src="/studypro/imagesandicons/vacations.png" />Vacations<span className="sidebar-text"></span></span>
+      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Task")}}><img className="icon sidebar-icon" src={clipboard} /><span className="sidebar-2-text">Tasks</span></span>
+      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Quizz")}}><img className="icon sidebar-icon" src={quiz} /><span className="sidebar-2-text">Quizzes</span></span>
+      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Exam")}}><img className="icon sidebar-icon" src={test} />Exams<span className="sidebar-text"></span></span>
+      <span className="sidebar-option activity" onClick={() => {props.setSidebarActivityType("Vacation")}}><img className="icon sidebar-icon" src={vacations} />Vacations<span className="sidebar-text"></span></span>
       </div>
       }
       </div>
     </div>
-    <span className="sidebar-option activity logout" onClick={() => setLogOut(true)}><img className="icon sidebar-icon" src="/studypro/imagesandicons/logout.png" /><span className="sidebar-text">Log out</span></span>
+    <span className="sidebar-option activity logout" onClick={() => setLogOut(true)}><img className="icon sidebar-icon" src={logoutImg} /><span className="sidebar-text">Log out</span></span>
     </aside>}
     </>
   )

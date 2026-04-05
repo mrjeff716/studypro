@@ -1,5 +1,7 @@
 import dayjs from 'dayjs'
 import { useEffect, useState } from "react"
+import BlackIllustratedSchoolLogowithtext from "../imagesandicons/BlackIllustratedSchoolLogowithtext.png"
+import BlackIllustratedSchoolLogowithouttext from "../imagesandicons/BlackIllustratedSchoolLogowithouttext.png"
 
 export default function Header(props) {
   const [dateAndTime, setDataAndTime] = useState({
@@ -25,8 +27,8 @@ export default function Header(props) {
     <header>
       <nav>
         <div className="nav-left">
-        <img className="study-pro-logo" src="/studypro/imagesandicons/BlackIllustratedSchoolLogowithtext.png"/>
-        <img className="study-pro-logo without-text" src="/studypro/imagesandicons/BlackIllustratedSchoolLogowithouttext.png"/>
+        <img className="study-pro-logo" src={BlackIllustratedSchoolLogowithtext}/>
+        <img className="study-pro-logo without-text" src={BlackIllustratedSchoolLogowithouttext}/>
         <p className="time">{dateAndTime.time}</p>
         <p className="date">{dateAndTime.date}</p>
         <h1 className="mobile-title">StudyPro</h1>
