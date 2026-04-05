@@ -208,7 +208,7 @@ export function RenderActivity(props) {
           />
           </div>
           <button className="mark-as-done-button" onClick={() => {
-            
+            props.setIsViewMoreRendered(prev => prev = false)
             props.setTotalTasksCompleted(prev => [...prev , props.activity])
             deleteActivity()
           }}>Mark as done</button>

@@ -7,6 +7,7 @@ import quiz from "../imagesandicons/quiz.png"
 import test from "../imagesandicons/test.png"
 import vacations from "../imagesandicons/vacations.png"
 import logoutImg from "../imagesandicons/logout.png"
+import cross from "../imagesandicons/cross.png"
 
 export default function Sidebar(props) {
   const [activities, setActivities] = useState(false)
@@ -70,7 +71,7 @@ export default function Sidebar(props) {
       <div className="sidebar-2-top">
           {/*<a href="#"><img className="icon" src="/images&icons/settings.png" /></a>
           <a href="#"><img className="icon" src="/images&icons/user.png" /></a>*/}
-          <a href="#"><img className="cross" src="/studypro/imagesandicons/cross.png" onClick={handleCrossClick}/></a>
+          <a href="#"><img className="cross" src={cross} onClick={handleCrossClick}/></a>
         </div>
       <div className="home-and-calendar-container">
       <span className="sidebar-option"

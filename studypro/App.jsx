@@ -82,7 +82,7 @@ export default function App() {
   }, [totalTasksCompleted])
 
   function getWeeklyTasksCompleted() {
-    const getWeeklyTasksCompleted = JSON.parse(localStorage.getItem("totalTasksCompleted")) || 0;
+    const getWeeklyTasksCompleted = JSON.parse(localStorage.getItem("weeklyTasksCompleted")) || 0;
     return getWeeklyTasksCompleted
   }
 
@@ -91,7 +91,6 @@ export default function App() {
   }, [weeklyTasksCompleted])
 
   useEffect(() => {
-    function formatWeeklyTasksCompleted() {
   // Use .filter to keep items that are NOT older than 7 days
   const filteredTasks = totalTasksCompleted.filter(task => {
     const isExpired = dayjs().diff(dayjs(task.timeOfSubmission), 'day') >= 7;
@@ -104,8 +103,7 @@ export default function App() {
   // Also update LocalStorage so it persists for the next visit
   localStorage.setItem("weeklyTasksCompleted", JSON.stringify(filteredTasks));
   //console.log("checked for weekly tasks completed", "weeklyTasksCompleted:", weeklyTasksCompleted.length) Test
-  }
-  formatWeeklyTasksCompleted()
+  
   }, [])
 
 

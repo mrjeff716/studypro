@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 import { useEffect, useState } from "react"
 import BlackIllustratedSchoolLogowithtext from "../imagesandicons/BlackIllustratedSchoolLogowithtext.png"
 import BlackIllustratedSchoolLogowithouttext from "../imagesandicons/BlackIllustratedSchoolLogowithouttext.png"
+import more from "../imagesandicons/more.png"
 
 export default function Header(props) {
   const [dateAndTime, setDataAndTime] = useState({
@@ -38,7 +39,7 @@ export default function Header(props) {
           {/*<a href="#"><img className="icon" src="/images&icons/settings.png" /></a>
           <a href="#"><img className="icon" src="/images&icons/user.png" /></a>*/}
           <h2>{props.userInfo.name} {props.userInfo.familyName}</h2>
-          <div className="more-button" onClick={handleMoreButton}><img src="/studypro/imagesandicons/more.png" /></div>
+          <div className="more-button" onClick={handleMoreButton}><img src={more} /></div>
         </div>
       </nav>
     </header>
